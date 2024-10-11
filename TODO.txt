@@ -4,8 +4,8 @@ TODO
 	a. Blossom Avenue
 	b. Kitchen Kit (Merchant & Trade)
 	c. Kitchen Kit (E-commerce)
-2. Incorporate flow diagrams into NOTES.md 
-3. Finish developing first draft of NOTES.txt
+2. Incorporate flow diagrams into BRIEF.md 
+3. Finish developing first draft of BRIEF.md
 4. Create Node server environment
 5. Test call to Winner
 6. Test call to Vecta
