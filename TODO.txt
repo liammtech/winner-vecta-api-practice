@@ -1,0 +1,15 @@
+TODO
+
+1. Create flow diagrams for:
+	a. Blossom Avenue
+	b. Kitchen Kit (Merchant & Trade)
+	c. Kitchen Kit (E-commerce)
+2. Incorporate flow diagrams into NOTES.md 
+3. Finish developing first draft of NOTES.txt
+4. Create Node server environment
+5. Test call to Winner
+6. Test call to Vecta
+7. Create test function to retrieve data from Winner
+8. Create test function to push data to Vecta
+9. Create test function to retrieve data from Vecta
+10. Create list of required functions and use cases (factoring in flowchart logic)
