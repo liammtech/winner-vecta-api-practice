@@ -22,10 +22,10 @@ This section is likely to develop as the project progresses, and is by no means 
 Below details requirements identified so far.
 
 #### Pre-requisites
-- Machine Host (with network connectivity)
+- Host machine/VM (with network connectivity)
 - Runtime environment (NodeJS)
-- Winner API Key
-- Vecta API Key
+- Winner API key
+- Vecta API key
 - Vecta user login credentials (Vecta API uses token-bearing as extra security protocol)
 
 #### Deliverables
