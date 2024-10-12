@@ -1,10 +1,14 @@
 # Winner <-> Vecta API Bridge
 
+## Background
+
 #### Within BA:
 - The Design Team uses the Winner Flex platform to undertake kitchen design work
 - The Commercial Team uses Vecta as a CRM for tracking leads/sales opportunities etc.
 
-## Brief Summary
+As of current, the design team must replicate any project data created in the Winner platform, manually within the Vecta platform.
+
+## Project Brief Summary
 This project is to develop a program/set of programs to bridge data between the Winner API and the Vecta API. Program will enable automatic transfer of certain data between BA's databases on either platform.
 
 #### Benefits:
