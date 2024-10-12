@@ -38,8 +38,9 @@ Below details requirements identified so far.
 - Initial aim is to develop the bridge to be able to handle <b>project and task creation</b>
 - Once this is operational, will develop in the ability for it to handle <b>project status updates</b>
 - Once Vecta API implements webhooks, will seek to automate the E-Commerce project creation flow (removing need for "send button")
-- Test integrity of program in all use cases
+- Test integrity of program in all identified use cases
 - Initialise and host program in perpetual runtime environment
+- Ongoing: consult stakeholders for potential future use cases, as business processes develop
 
 ## Process Flows
 The API bridge will need to allow the transfer of data for design projects, either from Winner to Vecta, or case-depending, from Vecta to Winner. The data flow depends upon the route to market/customer type.
