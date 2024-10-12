@@ -8,7 +8,7 @@
 
 As of current, the design team must replicate any project data created in the Winner platform, manually within the Vecta platform.
 
-## Project Brief Summary
+## Overview
 This project is to develop a program/set of programs to bridge data between the Winner API and the Vecta API. Program will enable automatic transfer of certain data between BA's databases on either platform.
 
 #### Objectives:
@@ -72,7 +72,7 @@ The API bridge will need to allow the transfer of data for design projects, eith
 
 ## Timeline
 - <b>Provisional deadline: </b> 31/10/2024
-- W/C 14/10/2024: week to dedicate to feasibility of in-house development:
+- W/C 14/10/2024: week to dedicate to investigating feasibility of in-house development:
     - 18/10/2024: should be able to demonstrate comprehensive program functionality, as proof-of-concept
     - If path forward seems unviable, will seek external support from Winner/Vecta
 - 19/10/2024 to 31/10/2024: complete project development
