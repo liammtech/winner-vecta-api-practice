@@ -6,10 +6,10 @@
 - The Design Team uses the Winner Flex platform to undertake kitchen design work
 - The Commercial Team uses Vecta as a CRM for tracking leads/sales opportunities etc.
 
-As of current, the design team must manually replicate any project data created in the Winner platform, within the Vecta platform. This creates administrative overhead, detracting from time available to allocate to design work. In addition, any projects not yet created within Vecta are not yet visible by other teams, and as a consequence are not chaseable.
+As of current, the design team must manually replicate any design project data created in the Winner platform, within the Vecta platform. This creates administrative overhead, detracting from time available to allocate to design work. In addition, any projects not yet created within Vecta are not yet visible by other teams, and as a consequence are not chaseable as a business pipeline opporunity.
 
 ## Overview
-This project is to develop a program/set of programs to bridge data between the Winner API and the Vecta API. Program will enable automatic transfer of certain data between BA's databases on either platform.
+This project is to develop a program/set of programs to communicate data between the Winner API and the Vecta API. Program will enable automatic transfer of certain data between BA's databases on either platform.
 
 #### Objectives:
 - Reduce administrative workload within the Design Team (manually replicating data from Winner within Vecta)
