@@ -27,3 +27,22 @@ The API bridge will need to allow the transfer of data for design projects, eith
 ![general process](flow-diagrams/project-creation-general-process.png "General Process")
 
 ![e-commerce process](flow-diagrams/project-creation-e-commerce.png "E-Commerce Process")
+
+## Requirements
+This section is likely to develop as the project progresses, and is by no means exhaustive.
+Below details requirements identified so far.
+
+#### Pre-requisites
+- Machine Host (with network connectivity)
+- Runtime environment (likely to be a NodeJS setup)
+- Winner API Key
+- Vecta API Key
+- Vecta user login credentials (Vecta API uses token-bearing as extra security protocol)
+
+#### Deliverables
+- <b>Script environment ("program"):</b> to be able to handle relevant requests, send relevant comms, and handle all data transfer logic between Winner and Vecta, except for:-
+- <b>Vecta-to-Winner control ("send button"):</b> this will be a small program to be used by the Kitchen Kit operator, when sending a project created in Vecta over to Winner* 
+
+<i>*This is to overcome a limitation in the Vecta API spec, in that the API cannot currently send automatic requests/calls in response to activity on the platform ("webhooks"). Vecta's team have advised that they are looking to implement this function in a future release, at which time we may be able to automate this</i>
+
+## Timescales
