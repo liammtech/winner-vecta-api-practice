@@ -1,4 +1,4 @@
-# Winner <-> Vecta API Bridge
+# BRIEF - Winner-Vecta API Bridge
 
 ## Background
 
@@ -44,5 +44,3 @@ Below details requirements identified so far.
 - <b>Vecta-to-Winner control ("send button"):</b> this will be a small program to be used by the Kitchen Kit operator, when sending a project created in Vecta over to Winner* 
 
 <i>*This is to overcome a limitation in the Vecta API spec, in that the API cannot currently send automatic requests/calls in response to activity on the platform ("webhooks"). Vecta's team have advised that they are looking to implement this function in a future release, at which time we may be able to automate this</i>
-
-## Timescales
