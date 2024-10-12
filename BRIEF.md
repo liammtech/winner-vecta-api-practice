@@ -18,7 +18,7 @@ This project is to develop a program/set of programs to communicate data between
 
 ## Requirements
 This section is likely to develop as the project progresses, and is by no means exhaustive.
-Below details requirements identified so far.
+Below are details on requirements identified so far.
 
 #### Pre-requisites
 - [ ] Host machine/VM with network connectivity (only required prior to deployment)
