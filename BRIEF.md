@@ -11,7 +11,7 @@ As of current, the design team must replicate any project data created in the Wi
 ## Project Brief Summary
 This project is to develop a program/set of programs to bridge data between the Winner API and the Vecta API. Program will enable automatic transfer of certain data between BA's databases on either platform.
 
-#### Benefits:
+#### Objectives:
 - Reduce administrative workload within the Design Team (manually replicating data from Winner within Vecta)
 - Increase data integrity by reducing errors from such replication
 - Commercial still have visibility of the Design Team's projects/leads
@@ -23,7 +23,7 @@ Below details requirements identified so far.
 
 #### Pre-requisites
 - Machine Host (with network connectivity)
-- Runtime environment (likely to be a NodeJS setup)
+- Runtime environment (NodeJS)
 - Winner API Key
 - Vecta API Key
 - Vecta user login credentials (Vecta API uses token-bearing as extra security protocol)
@@ -52,3 +52,10 @@ The API bridge will need to allow the transfer of data for design projects, eith
 ![general process](flow-diagrams/project-creation-general-process.png "General Process")
 
 ![e-commerce process](flow-diagrams/project-creation-e-commerce.png "E-Commerce Process")
+
+#### Timeline
+- <b>Provisional deadline: </b> 31/10/2024
+- W/C 14/10/2024: week to dedicate to feasibility of in-house development:
+    - 18/10/2024: should be able to demonstrate comprehensive program functionality, as proof-of-concept
+    - If path forward seems unviable, will seek external support from Winner/Vecta
+- 19/10/2024 to 31/10/2024: complete project development
