@@ -48,9 +48,9 @@ The API bridge will need to allow the transfer of data for design projects from 
 - Kitchen Kit Merchants/Trade = <b>Winner -> Vecta</b>
 - Kitchen Kit E-Commerce = <b>Vecta -> Winner -> Vecta</b>
 
-![general process](flow-diagrams/project-creation-general-process.png "General Process")
+![general process](../flow-diagrams/project-creation-general-process.png "General Process")
 
-![e-commerce process](flow-diagrams/project-creation-e-commerce.png "E-Commerce Process")
+![e-commerce process](../flow-diagrams/project-creation-e-commerce.png "E-Commerce Process")
 
 ## Stakeholders & Personnel
 
