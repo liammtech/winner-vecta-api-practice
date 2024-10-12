@@ -6,7 +6,7 @@
 - The Design Team uses the Winner Flex platform to undertake kitchen design work
 - The Commercial Team uses Vecta as a CRM for tracking leads/sales opportunities etc.
 
-As of current, the design team must manually replicate any project data created in the Winner platform, within the Vecta platform. This creates administrative overhead, detracting from time available to allocate to design work. In addition, any projects not yet created within Vecta are not yet visible by other teams, and as a consequence not chaseable.
+As of current, the design team must manually replicate any project data created in the Winner platform, within the Vecta platform. This creates administrative overhead, detracting from time available to allocate to design work. In addition, any projects not yet created within Vecta are not yet visible by other teams, and as a consequence are not chaseable.
 
 ## Overview
 This project is to develop a program/set of programs to bridge data between the Winner API and the Vecta API. Program will enable automatic transfer of certain data between BA's databases on either platform.
@@ -14,8 +14,7 @@ This project is to develop a program/set of programs to bridge data between the 
 #### Objectives:
 - Reduce administrative workload within the Design Team (manually replicating data from Winner within Vecta)
 - Increase data integrity by reducing errors from such replication
-- Commercial still have visibility of the Design Team's projects/leads
-- Visibility may potentially be increased (for example, if any manual entries were previously missed)
+- Increase project pipeline visibility for Commercial Team
 
 ## Requirements
 This section is likely to develop as the project progresses, and is by no means exhaustive.
@@ -43,7 +42,7 @@ Below details requirements identified so far.
 - Ongoing: consult stakeholders for potential future use cases, as business processes develop
 
 ## Process Flows
-The API bridge will need to allow the transfer of data for design projects, either from Winner to Vecta, or case-depending, from Vecta to Winner. The data flow depends upon the route to market/customer type.
+The API bridge will need to allow the transfer of data for design projects from Winner to Vecta or, case-depending, from Vecta to Winner. The data flow depends upon the route to market/customer type.
 
 - Blossom Avenue/Retail =  <b>Winner -> Vecta</b>
 - Kitchen Kit Merchants/Trade = <b>Winner -> Vecta</b>
