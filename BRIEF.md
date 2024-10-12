@@ -11,7 +11,7 @@ As of current, the Design Team must manually replicate any design project data c
 ## Overview
 This project is to develop a program/set of programs to communicate data between the Winner API and the Vecta API. Program will enable automatic transfer of certain data between BA's databases on either platform.
 
-#### Objectives:
+#### Goals:
 - Reduce administrative workload within the Design Team (manually replicating data from Winner within Vecta)
 - Increase data integrity by reducing errors from such replication
 - Increase project pipeline visibility for Commercial Team
