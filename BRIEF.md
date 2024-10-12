@@ -53,7 +53,24 @@ The API bridge will need to allow the transfer of data for design projects, eith
 
 ![e-commerce process](flow-diagrams/project-creation-e-commerce.png "E-Commerce Process")
 
-#### Timeline
+## Stakeholders & Personnel
+
+#### Audience
+- BA Design Team
+- BA Commercial Team
+- BA Marketing Team
+
+#### Team Responsibilities
+- IT Administrator:
+    - Consult with stakeholders for project requirements
+    - Develop, test and deploy the API bridge application
+    - Report on project progress, highlighting risks/obstacles
+- IT Manager:
+    - Identify & advise host location for application to enable deployment
+- Office Operations Manager:
+    - Manage comms between IT and Marketing/Commercial teams
+
+## Timeline
 - <b>Provisional deadline: </b> 31/10/2024
 - W/C 14/10/2024: week to dedicate to feasibility of in-house development:
     - 18/10/2024: should be able to demonstrate comprehensive program functionality, as proof-of-concept
