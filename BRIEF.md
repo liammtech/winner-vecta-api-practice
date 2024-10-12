@@ -6,7 +6,7 @@
 - The Design Team uses the Winner Flex platform to undertake kitchen design work
 - The Commercial Team uses Vecta as a CRM for tracking leads/sales opportunities etc.
 
-As of current, the design team must replicate any project data created in the Winner platform, manually within the Vecta platform.
+As of current, the design team must manually replicate any project data created in the Winner platform, within the Vecta platform. This creates administrative overhead, detracting from time available to allocate to design work. In addition, any projects not yet created within Vecta are not yet visible by other teams, and as a consequence not chaseable.
 
 ## Overview
 This project is to develop a program/set of programs to bridge data between the Winner API and the Vecta API. Program will enable automatic transfer of certain data between BA's databases on either platform.
@@ -22,11 +22,11 @@ This section is likely to develop as the project progresses, and is by no means 
 Below details requirements identified so far.
 
 #### Pre-requisites
-- Host machine/VM (with network connectivity)
-- Runtime environment (NodeJS)
-- Winner API key
-- Vecta API key
-- Vecta user login credentials (Vecta API uses token-bearing as extra security protocol)
+- [ ] Host machine/VM with network connectivity (only required prior to deployment)
+- [x] Runtime environment (NodeJS)
+- [x] Winner API key
+- [x] Vecta API key
+- [x] Vecta user login credentials (Vecta API uses token-bearing as extra security protocol)
 
 #### Deliverables
 - <b>Script environment ("program"):</b> to be able to handle relevant requests, send relevant comms, and handle all data transfer logic between Winner and Vecta, except for:-
