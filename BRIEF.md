@@ -32,8 +32,14 @@ Below details requirements identified so far.
 - <b>Script environment ("program"):</b> to be able to handle relevant requests, send relevant comms, and handle all data transfer logic between Winner and Vecta, except for:-
 - <b>Vecta-to-Winner control ("send button"):</b> this will be a small program to be used by the Kitchen Kit operator, when sending a project created in Vecta over to Winner* 
 
-<i>*This is to overcome a limitation in the Vecta API spec, in that the API cannot currently send automatic requests/calls in response to activity on the platform ("webhooks"). Vecta's team have advised that they are looking to implement this function in a future release, at which time we may be able to automate this</i>
+<i>*This is to overcome a limitation in the Vecta API spec, in that the API cannot currently send automatic requests/calls in response to activity on the platform ("webhooks"). Vecta's team have advised that they are looking to implement this functionality in a future release, at which time we may be able to automate this</i>
 
+#### Scope
+- Initial aim is to develop the bridge to be able to handle <b>project and task creation</b>
+- Once this is operational, will develop in the ability for it to handle <b>project status updates</b>
+- Once Vecta API implements webhooks, will seek to automate the E-Commerce project creation flow (removing need for "send button")
+- Test integrity of program in all use cases
+- Initialise and host program in perpetual runtime environment
 
 ## Process Flows
 The API bridge will need to allow the transfer of data for design projects, either from Winner to Vecta, or case-depending, from Vecta to Winner. The data flow depends upon the route to market/customer type.
