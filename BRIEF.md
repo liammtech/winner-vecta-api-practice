@@ -17,17 +17,6 @@ This project is to develop a program/set of programs to bridge data between the 
 - Commercial still have visibility of the Design Team's projects/leads
 - Visibility may potentially be increased (for example, if any manual entries were previously missed)
 
-## Process Flows
-The API bridge will need to allow the transfer of data for design projects, either from Winner to Vecta, or case-depending, from Vecta to Winner. The data flow depends upon the route to market/customer type.
-
-- Blossom Avenue/Retail =  <b>Winner -> Vecta</b>
-- Kitchen Kit Merchants/Trade = <b>Winner -> Vecta</b>
-- Kitchen Kit E-Commerce = <b>Vecta -> Winner -> Vecta</b>
-
-![general process](flow-diagrams/project-creation-general-process.png "General Process")
-
-![e-commerce process](flow-diagrams/project-creation-e-commerce.png "E-Commerce Process")
-
 ## Requirements
 This section is likely to develop as the project progresses, and is by no means exhaustive.
 Below details requirements identified so far.
@@ -44,3 +33,15 @@ Below details requirements identified so far.
 - <b>Vecta-to-Winner control ("send button"):</b> this will be a small program to be used by the Kitchen Kit operator, when sending a project created in Vecta over to Winner* 
 
 <i>*This is to overcome a limitation in the Vecta API spec, in that the API cannot currently send automatic requests/calls in response to activity on the platform ("webhooks"). Vecta's team have advised that they are looking to implement this function in a future release, at which time we may be able to automate this</i>
+
+
+## Process Flows
+The API bridge will need to allow the transfer of data for design projects, either from Winner to Vecta, or case-depending, from Vecta to Winner. The data flow depends upon the route to market/customer type.
+
+- Blossom Avenue/Retail =  <b>Winner -> Vecta</b>
+- Kitchen Kit Merchants/Trade = <b>Winner -> Vecta</b>
+- Kitchen Kit E-Commerce = <b>Vecta -> Winner -> Vecta</b>
+
+![general process](flow-diagrams/project-creation-general-process.png "General Process")
+
+![e-commerce process](flow-diagrams/project-creation-e-commerce.png "E-Commerce Process")
