@@ -17,14 +17,12 @@ This project is to develop a program/set of programs to bridge data between the 
 - Commercial still have visibility of the Design Team's projects/leads
 - Visibility may potentially be increased (for example, if any manual entries were previously missed)
 
-## Project Breakdown
+## Process Flows
 The API bridge will need to allow the transfer of data for design projects, either from Winner to Vecta, or case-depending, from Vecta to Winner. The data flow depends upon the route to market/customer type.
 
 - Blossom Avenue/Retail =  <b>Winner -> Vecta</b>
 - Kitchen Kit Merchants/Trade = <b>Winner -> Vecta</b>
 - Kitchen Kit E-Commerse = <b>Vecta -> Winner -> Vecta</b>
-
-## Process Flows
 
 ![general process](flow-diagrams/project-creation-general-process.png "General Process")
 
