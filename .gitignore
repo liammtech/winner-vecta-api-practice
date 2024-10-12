@@ -1,0 +1,5 @@
+# Ignore all .txt files
+*.txt
+
+# Ignore any environment files
+*.env
