@@ -2,7 +2,7 @@
   "name": "winner-vecta-api",
   "version": "1.0.0",
   "description": "Full README documentation to be produced at conclusion of project development.",
-  "main": "index.js",
+  "main": "scripts/server.js",
   "directories": {
     "doc": "docs"
   },
@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "axios": "^1.7.7",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1"
   }
 }

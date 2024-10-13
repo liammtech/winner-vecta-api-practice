@@ -1,13 +1,23 @@
 const express = require('express');
-const app = express();
+const { getProjectById } = require('./winnerClient');
 
-app.use(express.json());
+const app = express();
 const PORT = process.env.PORT || 3000;
 
-const winnerClient = axios.create({
-    baseURL: process.env.WINNER_BASE_URL,
-    headers: {
-        'Authorization': `Bearer ${process.env.WINNER_API_KEY}`,
-        'Content-Type': 'application/json',
-    },
+app.get('/project/:projectGuid', async (req, res) => {
+  const { projectGuid } = req.params;
+  const { shopGuid } = req.query;
+  if (!shopGuid) {
+    return res.status(400).json({ error: 'Missing shopGuid query parameter' });
+  }
+  try {
+    const project = await getProjectById(shopGuid, projectGuid);
+    res.status(200).json(project);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch project data' });
+  }
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
