@@ -2,7 +2,7 @@
 - Initialised test server environment
 - Installed various project dependencies
 - Set environment parameters inc. API Keys & base URLs
-- Attempted several GET calls to Winner unsuccessfully
+- Attempted several GET calls to Winner Projects endpoint unsuccessfully, followed by one successful test call where ID parameters were hardcoded - to investigate tomorrow
 
 ### 12/10/2024
 - Finished first draft of project brief
