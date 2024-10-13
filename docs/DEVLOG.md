@@ -3,4 +3,3 @@
 - Created process flow diagrams: General use & E-Commerce
 - Initialised .gitignore to exclude TODO's and environment information
 - Created development log for progress tracking
-
