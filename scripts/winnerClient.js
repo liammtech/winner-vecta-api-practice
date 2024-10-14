@@ -8,3 +8,5 @@ const winnerClient = axios.create({
     'Content-Type': 'application/json',
   },
 });
+
+console.log(winnerClient)
