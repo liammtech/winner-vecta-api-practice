@@ -29,7 +29,7 @@
 - Also asked Luke to create a project or two, also a success. This proves the logic isn't currently tied to any one user. Still shows up under "IT" but this is as expected, it's currently hard-coded in. 
 - See below image "BIG OL FAT TEST" is one I'd created, "Lucas FrazMaTazz" is Luke's (of course):
 
-![vecta project imports](../flow-diagrams/project-creation-e-commerce.png "Vecta Project Imports")
+![vecta project imports](../screenshots/vecta-project-imports.png "Vecta Project Imports")
 
 - Next is to revisit process flow, and specifically "wire up" what goes where data-wise, before implementing into script
 
