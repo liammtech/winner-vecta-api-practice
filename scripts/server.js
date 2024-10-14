@@ -8,24 +8,127 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const shopGuid = '99fb9f59-4c2d-495f-8af9-8188b531782d';
-const projectGuid = '68dd9e02-5217-42da-aa0b-2bf7ab4b8672';
 const winnerApiKey = process.env.WINNER_FLEX_API_KEY;
-const vectaBaseUrl = 'https://api.vecta.net/api'; // Updated base URL
-const vectaApiKey = process.env.VECTA_API_KEY; // Use the API key from the environment variable
+const vectaBaseUrl = 'https://api.vecta.net/api';
+const vectaApiKey = process.env.VECTA_API_KEY;
 
 // Middleware
 app.use(bodyParser.json());
 
-// Webhook endpoint
-app.post('/webhook', (req, res) => {
-    const webhookData = req.body;
+async function fetchProjectFromWinner(projectGuid, shopGuid) {
+    const options = {
+        hostname: 'flex.compusoftgroup.com',
+        path: `/eapi/v1/projects/${projectGuid}?shopGuid=${shopGuid}`,
+        method: 'GET',
+        headers: {
+            'apiKey': `${winnerApiKey}`,
+            'Content-Type': 'application/json',
+        },
+    };
 
-    // Process the incoming data here
+    return new Promise((resolve, reject) => {
+        const req = https.request(options, (res) => {
+            let data = '';
+
+            res.on('data', (chunk) => {
+                data += chunk;
+            });
+
+            res.on('end', () => {
+                if (res.statusCode === 200) {
+                    resolve(JSON.parse(data));
+                } else {
+                    reject(`Failed to fetch project data. Status code: ${res.statusCode}`);
+                }
+            });
+        });
+
+        req.on('error', (e) => {
+            reject(`Problem with request: ${e.message}`);
+        });
+
+        req.end();
+    });
+}
+
+async function transferProjectToVecta(projectData) {
+    const token = await loginVecta();
+
+    // Filter out fields that are not expected by Vecta API
+    const allowedFields = ['projectName'];
+    const filteredProjectData = {};
+    allowedFields.forEach(field => {
+        if (projectData[field]) {
+            filteredProjectData[field] = projectData[field];
+        }
+    });
+
+    const validationResult = validateWinnerData(filteredProjectData);
+
+    if (validationResult.error) {
+        throw new Error(`Validation error: ${validationResult.error}`);
+    }
+
+    const vectaProjectData = {
+        name: filteredProjectData.projectName,
+        workflowId: process.env.VECTA_GUID_DESIGN_WORKFLOW,
+        ownerId: process.env.VECTA_GUID_IT_USER,
+        assignedToId: process.env.VECTA_GUID_IT_USER,
+    };
+
+    const response = await axios.post(`${vectaBaseUrl}/projects`, vectaProjectData, {
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'x-api-key': vectaApiKey,
+        },
+    });
+
+    return response.data;
+}
+
+async function loginVecta() {
+    const loginData = {
+        account: process.env.VECTA_COMPANY,
+        password: process.env.VECTA_PASSWORD,
+        username: process.env.VECTA_USERNAME,
+        restrictedAccess: true,
+    };
+
+    const response = await axios.post(`${vectaBaseUrl}/auth`, loginData, {
+        headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': vectaApiKey,
+        },
+    });
+
+    return response.data.token;
+}
+
+function validateWinnerData(data) {
+    const schema = Joi.object({
+        projectName: Joi.string().required(),
+    });
+
+    return schema.validate(data);
+}
+
+// Webhook endpoint
+app.post('/webhook', async (req, res) => {
+    const webhookData = req.body;
     console.log('Webhook data received:', webhookData);
 
-    // Respond to the webhook request
-    res.status(200).send('Webhook received successfully');
+    const subjectParts = webhookData.subject.split('/');
+    const projectGuid = subjectParts[2];
+    const shopGuid = subjectParts[1];
+
+    try {
+        const projectData = await fetchProjectFromWinner(projectGuid, shopGuid);
+        await transferProjectToVecta(projectData);
+        res.status(200).send('Webhook processed successfully');
+    } catch (error) {
+        console.error('Error processing webhook:', error);
+        res.status(500).send('Internal Server Error');
+    }
 });
 
 // Start the server
@@ -36,101 +139,4 @@ app.listen(PORT, () => {
 if (!winnerApiKey) {
   console.error('Winner API key is missing. Please check your .env file.');
   process.exit(1);
-}
-
-// Joi schema for validating Winner project data
-const projectSchema = Joi.object({
-  name: Joi.string().required(),
-  // Add more fields based on the Winner API response
-});
-
-const options = {
-  hostname: 'flex.compusoftgroup.com',
-  path: `/eapi/v1/projects/${projectGuid}?shopGuid=${shopGuid}`,
-  method: 'GET',
-  headers: {
-    'apiKey': winnerApiKey,
-    'Content-Type': 'application/json',
-  },
-};
-
-console.log('Winner API Key:', winnerApiKey); // Log the API key to verify it's being read correctly
-
-const req = https.request(options, (res) => {
-  let data = '';
-
-  res.on('data', (chunk) => {
-    data += chunk;
-  });
-
-  res.on('end', async () => {
-    if (res.statusCode === 200) {
-      const projectData = JSON.parse(data);
-      console.log('Project Data from Winner:', projectData);
-
-      // Validate and transform project data
-      const { error, value } = projectSchema.validate({
-        name: projectData.projectName,
-        // Include other fields if needed
-      });
-
-      if (error) {
-        console.error('Validation error:', error.details);
-        return;
-      }
-
-      console.log('Validated Project Data:', value);
-      await sendToVecta(value);
-    } else {
-      console.error(`Failed to fetch project data. Status code: ${res.statusCode}`);
-      console.error('Response:', data);
-    }
-  });
-});
-
-req.on('error', (e) => {
-  console.error(`Problem with request: ${e.message}`);
-});
-
-req.end();
-
-// Function to authenticate and send data to Vecta API
-async function sendToVecta(projectData) {
-  const loginData = {
-    account: process.env.VECTA_COMPANY,
-    password: process.env.VECTA_PASSWORD,
-    username: process.env.VECTA_USERNAME,
-    restrictedAccess: true,
-  };
-
-  try {
-    // Step 1: Login and retrieve the JWT token
-    const loginResponse = await axios.post(`${vectaBaseUrl}/auth`, loginData, {
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': vectaApiKey, // Include the API key
-      },
-    });
-
-    const token = loginResponse.data.token; // Assuming the token is returned in 'token' field
-    console.log('Login successful, token received:', token);
-
-    // Step 2: Use the token for a subsequent API call
-    const vectaResponse = await axios.post(`${vectaBaseUrl}/projects`, {
-      name: projectData.name,
-      description: projectData.description,
-      workflowId: process.env.VECTA_GUID_DESIGN_WORKFLOW,
-      ownerId: process.env.VECTA_GUID_IT_USER,
-      assignedToId: process.env.VECTA_GUID_IT_USER,
-    }, {
-      headers: {
-        'Authorization': `Bearer ${token}`, // Include the bearer token
-        'x-api-key': vectaApiKey, // Include the API key
-      },
-    });
-
-    console.log('API call to Vecta successful:', vectaResponse.data);
-  } catch (error) {
-    console.error('Error making API call to Vecta:', error.response ? error.response.data : error.message);
-  }
 }

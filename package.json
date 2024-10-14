@@ -2,14 +2,14 @@
   "name": "winner-vecta-api",
   "version": "1.0.0",
   "description": "Full README documentation to be produced at conclusion of project development.",
-  "main": "scripts/misc/testMove.js",
+  "main": "scripts/server.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "npm /scripts/misc/testMove.js",
-    "dev": "nodemon /scripts/misc/testMove.js"
+    "serve": "npm /scripts/server.js",
+    "dev": "nodemon /scripts/server.js"
   },
   "keywords": [],
   "author": "",
