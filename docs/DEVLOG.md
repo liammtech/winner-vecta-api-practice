@@ -1,3 +1,9 @@
+### 15/10/2024
+#### Status: Mapping data flows
+- The process for getting all data required into Vecta will need a few more stages than originally thought
+- Housing Winner's and Vecta's project no.'s in their counterparts is quite tricky. There's an externalUniqueId field in Winner, which in the spec is listed as having the expressed purpose of housing a third party reference, so this is okay. Did a PUT to this without any issue. 
+- Vecta's portal shows an updateable field, that's clearly been designated/configured for a custom Flex reference (Flex project no.). However, I can't find it anywhere in the API. This is after assigning one to a project within the portal and doing a call; looked through the specs for the user-defined endpoints, and tried a few different things, still no luck. The spec description on these isn't very clear, and it seems from the "Get all" endpoint that there is nothing configured in there anyway. I will probably need to speak to Vecta/Kerridge support about this, and get some advice (or see if they have to switch anything on at their end)
+
 ### 14/10/2024
 #### Status: Skeleton Winner Projects can now automatically transfer to Vecta
 - Resolved issue surrounding Winner Projects GET calls; request header for API key needs to be lower case ("x-api-key" rather than "X-API-KEY")
