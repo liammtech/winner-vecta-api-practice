@@ -18,7 +18,7 @@
     - Vecta queries Winner, processes info, updates it
     - Winner queries Vecta, processes info, updates it (this step is actually job done altogether)
 
-- One benefit is of course once the Winner to Vecta update process is live, it becomes functional for any project updates, making the data live within Vecta
+- One benefit is of course once the Winner to Vecta update process is live, it becomes functional for any project updates, making the data within Vecta truly live, and not just a snapshot
 - To accommodate all of this, each system needs to house the other's project number, which is proving quite tricky. There's an externalUniqueId field in Winner, which in the spec is listed as having the expressed purpose of housing a third party reference, so this is okay. Did a PUT to this without any issue. 
 - Vecta's portal shows an updateable field, that's clearly been designated/configured for a custom Flex reference (Flex project no.). However, I can't find it anywhere in the API. This is after assigning one to a project within the Vecta portal and doing a call. I looked through the specs for Vecta's user-defined endpoints, and tried a few different things, still no luck. The spec description on these isn't very clear, and it seems from the "Get all" endpoint that there is nothing configured in there anyway. I will probably need to speak to Vecta/Kerridge support about this, and get some advice (or see if they have to switch anything on at their end)
 - In the meantime, I'll park the Winner Project No. in Vecta's "description". But this will need sorting, since with this being the typical "large text field", it would really be the ideal place for the Comms 1 to 10 to be able to go
