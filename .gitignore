@@ -8,4 +8,7 @@
 node_modules
 
 # Ignore miscellaneous scripts (these are basically drafts/various test versions etc.)
-scripts/misc
+scripts/prev-scripts
+
+# Ignore json
+json
