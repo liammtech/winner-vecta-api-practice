@@ -2,7 +2,7 @@
 #### Status: Mapping data flows
 - The process for getting all data required into Vecta will need a few more stages than originally thought
 - There will essentially have to be a zig-zag of calls between Winner and Vecta before all desired project info is transferred. The reason being, is that at project creation stage, you cannot enter all info straight away. Data such as External Ref (which we're going to use for customer no.), Project status, Value - the headers that contain these values within the Winner portal are all greyed out, until the project is saved/created. So a Vecta update request is necessary, once all fields are complete
-- Configured a webhook that signals whenever the Winner project - working just fine
+- Configured a webhook that signals whenever the Winner project is updated - working just fine
 - The update calls (PUT request) in both Winner and Vecta expect a fair bit of minimum info before they'll do anything, the spec dictates this (unlike a GET request, which will happily just take the project ID as the criteria). So on each update call, you need to do a GET request and grab the necessary data to validate a PUT request. You combine this with whichever new values you're looking to update, and send
 - To do this, we need a key on either side that calls the corresponding project up in the other platform's API
 - We don't want to be storing GUIDs in the other's databases (overkill, and arguably a bit of a security no-no). But each API does have roundabout methods of retrieving the project GUIDs via their own Project Numbers - which would be fine to store. So the general idea for each Update Request:
