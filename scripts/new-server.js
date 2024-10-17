@@ -339,45 +339,59 @@ app.post('/project-updated', async (req, res) => {
 
     try {
         const winnerProjectData = await getWinnerProjectData(projectGuid, shopGuid);
+        console.log('Winner Project Data:', winnerProjectData); // Log the fetched data
+
+        if (!winnerProjectData.externalUniqueID) {
+            console.error('Error: externalUniqueID is null or undefined');
+            return res.status(400).json({ message: 'Invalid externalUniqueID' });
+        }
+
         const winnerStatusId = winnerProjectData.status_StandardText;
-
         const vectaToken = await loginVecta();
+        
         const vectaProjectId = await searchVectaProjectByExternalUniqueId(winnerProjectData.externalUniqueID, vectaToken);
+        console.log(`Vecta Project No: ${winnerProjectData.externalUniqueID}`);
+        console.log(`Vecta Project ID: ${vectaProjectId}`);
+
         const vectaCompanyId = await getCompanyByAccountNumber(winnerProjectData.externalReference, vectaToken);
-        console.log(`Did we get it? ${vectaProjectId}`)
-        const vectaProjectData = await getVectaProject(vectaProjectId, vectaToken)
+        console.log(`Vecta Company ID: ${vectaCompanyId}`);
 
-        vectaStatusId = await getVectaStatusByWinnerStatus(winnerStatusId)
-        console.log(`Vecta project data: ${vectaProjectData}`)
+        const vectaProjectData = await getVectaProject(vectaProjectId, vectaToken);
+        console.log(`Vecta Project Data: ${JSON.stringify(vectaProjectData, null, 2)}`);
 
+        const vectaStatusId = await getVectaStatusByWinnerStatus(winnerStatusId);
+        console.log(`Vecta Status ID: ${vectaStatusId}`);
+
+        // Build updated project data
         const updatedVectaProjectData = {
-            id: vectaProjectData.id,  // Use the existing project ID variable
-            name: vectaProjectData.name,  // Use the project name from winnerProjectData
+            id: vectaProjectData.id,
+            name: winnerProjectData.projectName, // Assuming you're mapping names correctly
             projectNo: vectaProjectData.projectNo,
-            description: vectaProjectData.description,  // Convert projectId to string if necessary
-            workflowId: vectaProjectData.workflowId,  // Use workflow ID from winnerProjectData
-            workflowStageId: vectaStatusId,  // Use the status ID that you've defined
-            primaryCompanyId: vectaCompanyId, // Structure as per the API requirement
-            primaryContactIds: [],  // Assuming no primary contact IDs are needed
-            estimatedValue: winnerProjectData.budgetValue || 0,  // Default to 0 if not defined
-            expectedValue: 0.0,  // Default expected value, can change if needed
-            weightedValue: 0.0,  // Default weighted value, adjust if necessary
-            percentComplete: 0,  // Default percent complete
-            durationLength: null,  // Use existing duration
-            durationType: "Days",  // Assuming duration type remains constant
-            ownerId: vectaProjectData.ownerId,  // Use the owner ID from winnerProjectData
-            ownerName: vectaProjectData.ownerName,  // Use the owner name from winnerProjectData
-            assignedToId: vectaProjectData.assignedToId,  // Use assigned ID from winnerProjectData
-            assignedToName: vectaProjectData.assignedToName,  // Use assigned name from winnerProjectData
-            startDateTime: null,  // Use start date if available
-            dueDateTime: null,  // Use due date if available
-            actionDateTime: null,  // Use action date if available
-            createdDateTime: vectaProjectData.createdDateTime,  // Can replace with actual created date if available
-            modifiedDateTime: vectaProjectData.modifiedDateTime,  // Can replace with actual modified date if available
-            createdById: vectaProjectData.createdById,  // Use created by ID from winnerProjectData
-            modifiedById: vectaProjectData.modifiedById,  // Use modified by ID from winnerProjectData
-            lastTransitionDateTime: new Date().toISOString() //vectaProjectData,lastTransitionDateTime  // Current time for last transition
+            description: vectaProjectData.description,
+            workflowId: vectaProjectData.workflowId,
+            workflowStageId: vectaStatusId,
+            primaryCompanyId: vectaCompanyId,
+            primaryContactIds: [],
+            estimatedValue: winnerProjectData.budgetValue || 0,
+            expectedValue: 0.0,
+            weightedValue: 0.0,
+            percentComplete: 0,
+            durationLength: null,
+            durationType: "Days",
+            ownerId: vectaProjectData.ownerId,
+            ownerName: vectaProjectData.ownerName,
+            assignedToId: vectaProjectData.assignedToId,
+            assignedToName: vectaProjectData.assignedToName,
+            startDateTime: null,
+            dueDateTime: null,
+            actionDateTime: null,
+            createdDateTime: vectaProjectData.createdDateTime,
+            modifiedDateTime: vectaProjectData.modifiedDateTime,
+            createdById: vectaProjectData.createdById,
+            modifiedById: vectaProjectData.modifiedById,
+            lastTransitionDateTime: new Date().toISOString(),
         };
+        
         console.log('Updated Vecta Project Data:', JSON.stringify(updatedVectaProjectData, null, 2));
         await updateVectaProject(updatedVectaProjectData, vectaToken);
 
@@ -419,7 +433,6 @@ const searchVectaProjectByExternalUniqueId = (externalUniqueId, vectaToken) => {
         });
     });
 };
-
 
 // Function to read workflow statuses from JSON file
 const readWorkflowStatuses = async () => {
@@ -541,3 +554,4 @@ async function updateVectaProject(projectData, vectaToken) {
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
